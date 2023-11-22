@@ -105,7 +105,7 @@ arr.forEach((el) => {
         <img class='thumbnail' src='${el.img}'>
     </div>
         <div class='container-txt'>
-        <h2>
+        <h2 class='titulo'>
             ${el.name}
         </h2>
         <h3 class='anunciante'>

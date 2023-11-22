@@ -144,15 +144,8 @@ header h1{
     }
 
 }
-@media (max-width: 375px) {
-    .container-img{
-        overflow-x: hidden;
-        width: 200px;
-        min-width:  200px;
-    }
-}
 
-@media (max-width: 355px) {
+@media (max-width: 375px) {
     .container-img{
         overflow-x: hidden;
         width: 120px;
