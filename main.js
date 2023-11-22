@@ -166,7 +166,7 @@ function resizeGrid() {
     if(calc == 1) calc++
 
     if (width <= 450) {
-        $('.container-product').width(width).height('200px');
+        $('.container-product').width(width).height('220px');
         content.css("grid-template-columns", `100%`);
     } else {
         $('.container-product').width('200px').height('404px');
