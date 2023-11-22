@@ -137,8 +137,8 @@ header h1{
         border-bottom: none;
         --pixels: 220px;
         overflow-x: hidden;
-        width: var(--pixels);
-        min-width:  var(--pixels);
+        width: 200px;
+        min-width:  200px;
         height: var(--pixels);
         min-height: var(--pixels);
     }
@@ -148,7 +148,7 @@ header h1{
     .container-img{
         overflow-x: hidden;
         width: 200px;
-        min-width:  200pxpx;
+        min-width:  200px;
     }
 }
 
