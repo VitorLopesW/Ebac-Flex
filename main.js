@@ -180,12 +180,26 @@ function resizeGrid() {
 
 function onLoad(){
     resizeGrid()
+    textHidden()
 }
 
 onLoad()
 
 
-
+function textHidden(){
+    const sobre = document.querySelector('#textSobreNos')
+    const saibaMais = `<b id='btnText'  style='cursor: pointer'>Click Aqui para saber mais</b>`
+    const esconder = `<b id='btnHidden'  style='cursor: pointer'>Click Aqui para Esconder</b>`
+    sobre.innerHTML = `<span class="tab"></span>Na NinStore, mergulhamos no universo mágico da Nintendo para trazer a você uma experiência única de compras online... ${saibaMais}`
+    const btnText = document.querySelector('#btnText')
+    btnText.addEventListener('click', () => {
+        sobre.innerHTML = `<span class="tab"></span>Na NinStore, mergulhamos no universo mágico da Nintendo para trazer a você uma experiência única de compras online. Somos mais do que uma simples loja; somos apaixonados por tudo relacionado à Nintendo, e nossa missão é compartilhar essa paixão com você, oferecendo os melhores produtos e serviços. Além disso, a NinStore é também um marketplace dedicado, proporcionando um espaço vibrante para anúncios relacionados ao mundo Nintendo. Se você procura vender ou encontrar itens exclusivos, a NinStore é o seu destino definitivo para explorar e celebrar a comunidade Nintendo. Junte-se a nós nessa jornada emocionante! <br><br>${esconder}`
+        const btnHidden = document.querySelector('#btnHidden')
+        btnHidden.addEventListener('click', () => {
+        textHidden()
+    })
+    })
+}
 
 
 
