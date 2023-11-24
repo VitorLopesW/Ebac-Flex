@@ -76,7 +76,11 @@ function load(console){
         `.trim()
         container.append(card)
     })
-    
+    //
+    const cards = document.querySelectorAll('.card')
+    if(cards > 6){
+        
+    }
 }
 
 function parcelas(num) {
