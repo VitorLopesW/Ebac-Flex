@@ -1,0 +1,119 @@
+header section{
+    position: sticky;
+    background-color: var(--red-n);
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+header h1{
+    background-color: aliceblue;
+    color: var(--red-n);
+    --padding-size: 20px;
+    padding: 5px;
+    padding-left: var(--padding-size);
+    padding-right: var(--padding-size);
+    border-radius: 30px;
+    font-weight: 500;
+    scale: 150%;
+}
+
+.nav-search input {
+    width: 450px;
+    height:  35px;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: 1px solid aliceblue;
+}
+
+.nav-search > .btn{
+    background-color: aliceblue;
+    color: var(--red-n);
+    border-radius: 4px;
+    --size: 35px;
+    width: var(--size);
+    height: var(--size);
+}
+
+.nav-search > .btn:hover{
+    scale: 105%;
+    cursor: pointer;
+}
+
+header > section > .cart {
+    color: aliceblue;
+    font-size: 25px;
+    padding: 5px;
+}
+
+header > section > .cart:hover {
+    outline: 2px solid aliceblue;
+    cursor: pointer;
+}
+
+header .side-bar {
+    background-color: aliceblue;
+    justify-content: left;
+    color: var(--red-n);
+    gap: 40px;
+    padding: 10px;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+header .side-bar > .btn{
+    padding: 5px;
+}
+header .side-bar > .btn:hover{
+    cursor: pointer;
+    outline: 1px solid var(--red-n);
+}
+
+@media (max-width: 1300px) {
+}
+
+@media (max-width: 1000px) {
+    header h1{
+        scale: 120%;
+    }
+    .nav-search input{
+        width: 300px;
+    }
+    header > section > .cart {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    header h1{
+        scale: 100%;
+    }
+    .nav-search input{
+        width: 200px;
+    }
+    header > section > .cart {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    header h1{
+        font-size: 20px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .nav-search input{
+        width: 150px;
+    }
+    .carrinho{
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav-search input{
+        width: 120px;
+    }
+}

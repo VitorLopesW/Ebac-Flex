@@ -1,0 +1,146 @@
+.container{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 5px;
+    margin: 10px;
+    max-width: 1015px;
+}
+
+@media (max-width: 1300px) {
+    .container{
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 760px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container{
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 505px;
+    }
+}
+
+@media (max-width: 620px) {
+    .container{
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 250;
+    }
+}
+
+.card{
+    width: 250px;
+    height: 540px;
+    background-color: rgb(245, 245, 245);
+    overflow: hidden;
+    filter: drop-shadow(0 0 0.15rem rgb(143, 143, 143));
+    border-bottom: var(--red-n) 3px solid;
+}
+
+.card > div {
+    margin-bottom: 5px;
+}
+
+
+/* Container Image */
+
+.container-img{
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.container-img > img {
+    width: 100%;
+    scale: 95%;
+}
+
+/* Container Text */
+
+.card .titulo{
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.card .anunciante h2{
+    color:rgb(109, 108, 108);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.card .preço
+{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.card .preço > .small
+{
+    font-size: 15px;
+    font-weight: 300;
+    
+}
+
+.parcelas{
+    color: rgb(112, 112, 112);
+}
+
+.card .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px
+}
+
+.card .buttons input{
+    background-color: var(--red-n);
+    color: aliceblue;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    min-width: 170px;
+}
+
+.card .buttons input:hover{
+    animation: identifier 1s infinite
+}
+
+@media (max-width: 620px) {
+    .card{
+        width: 350px;
+    }
+    .container-img{
+        width: 100%;
+
+    }
+}
+
+@media (max-width: 620px) {
+    .card{
+        width: 350px;
+    }
+    .container-img{
+        width: 100%;
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .card{
+        width: 260px;
+    }
+    .container-img{
+        width: 100%;
+        
+    }
+}
+
+/* PROMOÇÃO */
+
+.red{
+    color: #eb3636;
+}

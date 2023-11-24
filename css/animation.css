@@ -1,15 +1,7 @@
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
+@keyframes identifier {
+    0% {}
     50% {
-        opacity: 0;
+        outline: 5px solid rgb(248, 165, 165);
     }
-    100% {
-        opacity: 1;
-    }
-}
-
-.blink {
-    animation: blink 1s infinite; /* Adjust the duration as needed */
+    100% {}
 }
