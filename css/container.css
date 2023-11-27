@@ -35,8 +35,16 @@
     background-color: rgb(245, 245, 245);
     overflow: hidden;
     filter: drop-shadow(0 0 0.15rem rgb(143, 143, 143));
+    outline: 0px solid rgba(255, 255, 255, 0.5);
     border-bottom: var(--red-n) 3px solid;
     border-radius: 10px;
+    transition: all 2s ease; 
+}
+
+.card:hover{
+    scale: 101%;
+    outline: 10px solid rgba(255, 255, 255, 0.5);
+    z-index: 5;
 }
 
 .card > div {
@@ -107,7 +115,8 @@
 }
 
 .card .buttons input:hover{
-    animation: identifier 1s infinite
+    animation: identifier 1s infinite;
+    cursor: pointer;
 }
 
 @media (max-width: 620px) {
@@ -145,3 +154,4 @@
 .red{
     color: #eb3636;
 }
+

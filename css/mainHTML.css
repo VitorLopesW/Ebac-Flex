@@ -1,0 +1,53 @@
+main{
+    flex-direction: column;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.pagination div{
+    width: 20px;
+    height: 20px;
+    color: var(--red-n);
+    outline: var(--red-n) 2px solid;
+    padding: 15px;
+    margin: 5px;
+    margin-top:  20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.pagination .btn-pagination:hover{
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.pagination .next-btn{
+    background-color: #ced2d2;
+    color: var(--red-n);
+    outline: var(--red-n) 2px solid;
+}
+
+.pagination .solid{
+    background-color: #ced2d2;
+    scale: 150%;
+    color: vaR(--red-n);
+    cursor: default;
+    outline: none;
+}
+
+.btn-pagination-selected{
+    background-color: var(--red-n);
+    color: aliceblue!important;
+    outline: none!important;
+    font-size: 25px;
+    scale: 130%;
+}
+
+.not-a-button{
+    cursor: default!important;
+}

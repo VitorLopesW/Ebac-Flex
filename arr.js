@@ -242,4 +242,49 @@ export const arr = [
         "promoNumber": 1,
         "promoPreço": "109.99"
       },
+      {
+        "img": "/img/ps5.jpg",
+        "name": "Console PlayStation 5",
+        "anunciante": "NinStore",
+        "console": "Playstation 5",
+        "preço": 3449.99,
+        "promoNumber": 1,
+        "promoPreço": "109.99"
+      },
+      {
+        "img": "/img/ps52.jpg",
+        "name": "Console PlayStation® 5 + EA SPORTS FC™ 24",
+        "anunciante": "NinStore",
+        "console": "Playstation 5",
+        "preço": 3759.99,
+        "promoNumber": 1,
+        "promoPreço": "109.99"
+      },
+      {
+        "img": "/img/ps53.jpg",
+        "name": "Console PlayStation®5 + Marvel's Spider-Man 2",
+        "anunciante": "NinStore",
+        "console": "Playstation 5",
+        "preço": 4059.99,
+        "promoNumber": 1,
+        "promoPreço": "109.99"
+      },
+      {
+        "img": "/img/dualsense.jpg",
+        "name": "Controle DualSense - Branco",
+        "anunciante": "NinStore",
+        "console": "Playstation 5",
+        "preço": 559.99,
+        "promoNumber": 1,
+        "promoPreço": "109.99"
+      },
+      {
+        "img": "/img/seriesX.jpg",
+        "name": "Console Xbox Series X",
+        "anunciante": "NinStore",
+        "console": "Xbox Series X",
+        "preço": 4559.99,
+        "promoNumber": 1,
+        "promoPreço": "109.99"
+      },
   ]

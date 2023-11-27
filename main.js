@@ -1,7 +1,9 @@
 import { arr } from './arr.js'
 const container = $('.container')
+let show = [1,2,3]
 
-function load(console){
+function load(page, console){
+    window.scrollTo(0, 0)
     container.html('')
     let sideBarArr = []
     const sideBar = $('.side-bar')
@@ -17,20 +19,21 @@ function load(console){
 
     buttons.forEach((btn) => {
         btn.addEventListener('click', (event) => {
+            show = [1,2,3]
             if(event.target.innerHTML === '<span class="material-symbols-outlined">menu</span> TODOS') {
-                load(false)
+                load(0, false)
             } else {
-                load(event.target.innerHTML)
+                load(0, event.target.innerHTML)
             }
         })
     })
 
     //
     const arrFilter = console != false ? arr.filter((el) => el.console === console) : arr
+    let arrAppend = []
     arrFilter.forEach((el) =>{
         const card = document.createElement('div')
         card.classList.add('card')
-        const promo = dailyPromotion() == el.promoNumber ? 'red' : ''
         const [integer, decimal] = String(el.preço).split('.')
         card.innerHTML = `
         
@@ -47,7 +50,7 @@ function load(console){
     
             <a href='#' class='console'>${el.console}</a>
     
-            <div class='preço ${promo} flex-centralize'>
+            <div class='preço ${el.preço} flex-centralize'>
                 <div class='small'>
                     R$
                 </div>
@@ -74,13 +77,120 @@ function load(console){
             </div>
     
         `.trim()
-        container.append(card)
+        arrAppend.push(card)
     })
     //
-    const cards = document.querySelectorAll('.card')
-    if(cards > 6){
-        
+    let pages = []
+    let chunkSize =  12 // 12
+    for (let i = 0; i < arrAppend.length; i += chunkSize) {
+        pages.push(arrAppend.slice(i, i + chunkSize));
     }
+    pages[page].forEach((el) => container.append(el) )
+    const cards = document.querySelectorAll('.card')
+    function createPagination(){
+
+        const pagination = $('.pagination')
+        pagination.html('')
+        pages.forEach((el, index) => {
+            let pageNum = index + 1
+            //
+            if(index === 0) pagination.append(`<div class='flex-centralize next-btn btn-pagination not-a-button' id ='returnBtn'><span class="material-symbols-outlined">
+            star
+            </span></div>`)
+            //
+            let divToAppend = `<div class='flex-centralize btn-pagination' id='pagination${pageNum}'>${pageNum}</div>`
+            //
+            if(show.includes(pageNum) === true){
+                pagination.append(divToAppend)
+            }            
+            if(pageNum === pages.length && pages.length > 3) {
+                pagination.append(`<div class='flex-centralize solid' id='rightDot'>...</div>`)
+                pagination.append(`<div class='flex-centralize btn-pagination lastDiv' id='pagination${pageNum}'>${pageNum}</div>`)
+            }
+            if(pageNum === pages.length)  pagination.append(`<div class='flex-centralize next-btn btn-pagination not-a-button' id ='fowardBtn'><span class="material-symbols-outlined">
+            star
+            </span></div>`)
+
+        })
+        //
+        const paginationButtoms = document.querySelectorAll('.btn-pagination')
+        paginationButtoms.forEach((btn) => {
+            btn.classList.remove('btn-pagination-Selected')
+            btn.addEventListener('click', () => {
+                let pageNumber = Number(btn.id.replace('pagination', ''))
+                if (isNaN(pageNumber)) {
+                    return
+                }
+                //alert(pageNumber + "\r\n" + pages.length)
+                const clickedPage = show.indexOf(pageNumber)
+                if(show.includes(pageNumber)){
+                    function refactorShow(){
+                        if(pageNumber === 0) return
+                        if(pageNumber > 1 && clickedPage == 0){
+                            show.unshift(pageNumber - 1)
+                            show.pop(pageNumber + 1)
+                        }
+                        //else if(pageNumber > 1 && clickedPage == 1 && pageNumber < pages.length - 1){
+                        //}
+                        else if(pageNumber > 1 && clickedPage == 2  && pageNumber < pages.length){
+                            show.shift()
+                            show.push(pageNumber + 1)
+                        }
+                    }
+                    refactorShow()
+                    // append 
+                    load(pageNumber - 1, console)
+                    document.querySelector(`#${btn.id}`).classList.add('btn-pagination-selected')
+                }
+                if(show.includes(pageNumber) === false){
+                    function refactorShow(){
+                        if(pageNumber === pages.length){
+                            for (let i = 0; i < 3; i++) 
+                                show.shift();
+                            
+                            for (let i = pageNumber - 2; i <= pageNumber; i++) 
+                                show.push(i);
+                            
+                        }
+                            if(pageNumber === 1){
+                                for (let i = 0; i < 3; i++) 
+                                    show.shift();
+                                
+                                for (let i = 1; i <= 3; i++) 
+                                    show.push(i);
+                        }
+                    }
+                    refactorShow()
+                    // append 
+                    load(pageNumber - 1, console)
+                    document.querySelector(`#${btn.id}`).classList.add('btn-pagination-selected')
+                }
+
+                function refactorFirstAndLast(){
+                    if(pageNumber > 2 && pages.length > 3) {
+                        const divToAppend = '<div id="beforeDots" class="flex-centralize solid">...</div>'
+                        const one = `<div class='flex-centralize btn-pagination' id='pagination1'>1</div>`
+                        $(divToAppend).insertAfter(returnBtn)
+                        $(one).insertAfter(returnBtn)
+                        $('#pagination1').click(function(){
+                            
+                            show = [1,2,3]
+                            load(0, console)
+                        })
+                    }
+                    if(pageNumber >= pages.length - 1 ) {
+                        $('#rightDot').remove()
+                        $('.lastDiv').remove()
+                    }
+
+                }
+                refactorFirstAndLast()
+            })
+        })
+    }
+    createPagination()
+
+
 }
 
 function parcelas(num) {
@@ -93,38 +203,13 @@ function parcelas(num) {
     return ['2', (num / 2).toFixed(2)]
 }
 
-function dailyPromotion(){
-    const date = new Date()
-    return date.getDay()
-}
+
 
 function onLoad(){
-    dailyPromotion()
-    load(false)
+    load(0, false)
 }
 
 onLoad()
 
 //
 
-/*
-function textHidden(){
-    const sobre = document.querySelector('#textSobreNos')
-    const saibaMais = `<b id='btnText'  style='cursor: pointer'>Click Aqui para saber mais</b>`
-    const esconder = `<b id='btnHidden'  style='cursor: pointer'>Click Aqui para Esconder</b>`
-    sobre.innerHTML = `<span class="tab"></span>Na NinStore, mergulhamos no universo mágico da Nintendo para trazer a você uma experiência única de compras online... ${saibaMais}`
-    const btnText = document.querySelector('#btnText')
-    btnText.addEventListener('click', () => {
-        sobre.innerHTML = `<span class="tab"></span>Na NinStore, mergulhamos no universo mágico da Nintendo para trazer a você uma experiência única de compras online. Somos mais do que uma simples loja; somos apaixonados por tudo relacionado à Nintendo, e nossa missão é compartilhar essa paixão com você, oferecendo os melhores produtos e serviços. Além disso, a NinStore é também um marketplace dedicado, proporcionando um espaço vibrante para anúncios relacionados ao mundo Nintendo. Se você procura vender ou encontrar itens exclusivos, a NinStore é o seu destino definitivo para explorar e celebrar a comunidade Nintendo. Junte-se a nós nessa jornada emocionante! <br><br>${esconder}`
-        const btnHidden = document.querySelector('#btnHidden')
-        btnHidden.addEventListener('click', () => {
-        textHidden()
-    })
-    })
-}
-
-
-$(window).on('resize orientationchange', function(el){
-    resizeGrid()
-})
-*/

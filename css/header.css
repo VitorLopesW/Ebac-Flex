@@ -4,7 +4,7 @@ header section{
     padding: 1px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 header h1{
@@ -27,7 +27,7 @@ header h1{
     border: 1px solid aliceblue;
 }
 
-.nav-search > .btn{
+.nav-search > .btn-search{
     background-color: aliceblue;
     color: var(--red-n);
     border-radius: 4px;
@@ -36,7 +36,7 @@ header h1{
     height: var(--size);
 }
 
-.nav-search > .btn:hover{
+.nav-search > .btn-search:hover{
     scale: 105%;
     cursor: pointer;
 }

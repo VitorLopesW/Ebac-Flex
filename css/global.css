@@ -5,4 +5,16 @@ a{
 
 body{
     background-color: #ced2d2;
+    height: 100lvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+hr{
+    width: 99vw;
+    height: 2px;
+    background-color: var(--red-n);
+    border: none;
+    margin: 20px;
 }
